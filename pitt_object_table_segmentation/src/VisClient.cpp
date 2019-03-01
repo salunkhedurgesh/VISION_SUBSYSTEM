@@ -49,7 +49,7 @@ ArmorDirectiveReq add_prop(std::string string, std::string object, int value)
 {
 	ArmorDirectiveReq req;
 	std::vector<std::string> args;
-	req.client_name = "VisService";
+	req.client_name = "VisClient";
 	req.reference_name = "ontology";
 	req.command = "ADD";
 	req.primary_command_spec = "DATAPROP";
@@ -124,11 +124,11 @@ void scene_data_callback(const All_shapes_attributes::Ptr& msg)
 	// beginning identifier: LOAD_INIT_
 	    ArmorDirectiveReq reqinit;
 		std::vector<std::string> argsinit;
-		reqinit.client_name = "VisService";
+		reqinit.client_name = "VisClient";
 		reqinit.reference_name = "ontology";
 		reqinit.command = "LOAD";
 		reqinit.primary_command_spec = "FILE";
-		reqinit.secondary_command_spec = "MOUNTED";
+		reqinit.secondary_command_spec = "";
 		argsinit.push_back("/Downloads/");
 		argsinit.push_back("http://www.semanticweb.org/emaroLab/luca-buoncompagni/sit");
 		argsinit.push_back("true");
@@ -148,7 +148,7 @@ void scene_data_callback(const All_shapes_attributes::Ptr& msg)
 	// ending identifier: SCENE_UPDATED_
 	ArmorDirectiveReq reqend;
 	std::vector<std::string> argsend;
-	reqend.client_name = "VisService";
+	reqend.client_name = "VisClient";
 	reqend.reference_name = "ontology";
 	reqend.command = "SCENE";
 	reqend.primary_command_spec = "UPDATED";
