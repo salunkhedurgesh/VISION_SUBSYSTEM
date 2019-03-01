@@ -10,6 +10,7 @@ The Vision part of the Human-like Memory for Robots project is designed to acqui
 
 This repository has two main nodes: A node called VisNode, and a client node called VisClient.
 The object is to filter the raw data from RANSAC, and then pass the proper results to the ARMOR in order to add scenes to the ontology.
+
 **Data structure:**
 * object id
 * shape
