@@ -143,13 +143,10 @@
 	<node name="cylinder_segmentation_srv" 		pkg="pitt_object_table_segmentation" 	type="cylinder_segmentation_srv" 	/> <!-- output="screen"/> -->
 	<node name="cone_segmentation_srv" 			pkg="pitt_object_table_segmentation" 	type="cone_segmentation_srv" 		/> <!-- output="screen"/> -->
 	<node name="ransac_segmentation" 			pkg="pitt_object_table_segmentation" 	type="ransac_segmentation" 			output="screen"	    args= "$(arg ransac_show_primitives)"/>
-<!--  <node name="VisService" 			pkg="pitt_object_table_segmentation" 	type="VisService"/>
-  <node name="talker" 			pkg="beginner_tutorials" 	type="talker"/>
-  <node name="listener" 			pkg="beginner_tutorials" 	type="listener"/>
-  <node name="ERdummy" 		pkg="beginner_tutorials" 	type="ERdummy"		/> -->
-  <node pkg="armor" type="execute" name="armor_service" args="it.emarolab.armor.ARMORMainService"/>
-
-<node name="color_services" 		pkg="pitt_object_table_segmentation" 	type="color_services"  output="screen"/> 
+	<node name="VisNode" 			pkg="pitt_object_table_segmentation" 	type="VisNode"/>
+	<node name="VisClient" 			pkg="pitt_object_table_segmentation" 	type="VisClient"/>
+  	<node pkg="armor" type="execute" name="armor_service" args="it.emarolab.armor.ARMORMainService"/>
+	<node name="color_services" 		pkg="pitt_object_table_segmentation" 	type="color_services"  output="screen"/> 
 
 		<!--			TRACKER																							-->
 	<node name="geometric_tracker" 				pkg="pitt_geometric_tracking" 			type="geometric_tracker"
