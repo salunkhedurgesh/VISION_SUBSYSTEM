@@ -1,0 +1,35 @@
+<package>
+<name>pitt_msgs</name>
+  <version>1.0.0</version>
+  <description>The pitt_msgs package</description>
+
+  <!-- One maintainer tag required, multiple allowed, one person per tag --> 
+  <!-- Example:  -->
+  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
+  <maintainer email="luca.buoncompagni@edu.unige.it">Buoncompagni Luca</maintainer>
+  <author email="luca.buoncompagni@edu.unige.it">Buoncompagni Luca</author>
+  <url type="website">https://github.com/EmaroLab</url> -->
+
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>GPLv2</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>pcl_conversions</build_depend>
+<!--  <build_depend>pcl_ros</build_depend> -->
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>pcl_msgs</build_depend>
+  <build_depend>message_runtime</build_depend>
+
+  <run_depend>message_runtime</run_depend>
+<!--  <run_depend>message_generation</run_depend>-->
+  <run_depend>pcl_conversions</run_depend>
+<!--  <run_depend>pcl_ros</run_depend> -->
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>pcl_msgs</run_depend>
+</package>

@@ -1,0 +1,60 @@
+Header header
+
+#############################################
+# this message describe the Support Server data exchange.
+#
+# In particular, it take some parameter as input and looks for horizontal planes in the scene. 
+# When a plane is found a support description is created. Than such points are removed from the scene 
+# and the algorithm perform again the same operation iteratively (the planes are detached by using 
+# RANSAC method). 
+# Moreover, the system uses the support_edge_remove_offset ([xe,ye,ze]) parameter in order to retrieve a cloud that
+# contains only the points of the objects that are above a specific support (described also by {x_min,x_Max}
+# {y_min,y_Max} {z_med}). More specifically this is done by considering (x_min - xe < x < x_max + xe)
+# (y_min - ye < x < y_max + ye) and ( z_med > z + ze);
+# this is contained in the sub message field: "Support.on_cloud_support".
+# Note that wile the horizontal axis can be set (by default is is along z), the edge remove offset
+# is not parameterized and considers always the horizontal axis to be along z.
+# 
+# Also, it returns the used parameters that may be different from the input fields
+# in case in which it is less than 0 or vector are not of the correct dimensions (3d array). 
+# In those cases the default value are used.
+#
+# Finally, consider that this service requires other input parameter during launch as:
+# .......
+# .......
+# ....... 
+#############################################
+
+
+# inputs
+sensor_msgs/PointCloud2 	input_cloud		# the input cloud in which look for supports
+sensor_msgs/PointCloud2 	input_norm		# the structure contains the point norms of the input_cloud
+
+# parameters (if < 0 than default values)
+float32 	min_iterative_cloud_percentual_size 	# the percentage ([0,1]) of number of points (w.r.t. input_cloud) of the remaining cloud (iteratively supports removing) for which the service stops looking for further supports. 
+float32 	min_iterative_plane_percentual_size		# the percentage ([0,1]) of number of points (w.r.t. input_cloud) of the found plane for which the service stops looking for further supports.
+float32[] 	horizontal_axis 						# the coordinate ([X,Y,Z]) of the normal vector of the ground plane (use default id size != 3)
+float32 	variance_threshold_for_horizontal 		# the positive threshold (negative is balanced w.r.t. 0) for which a normals are considered to be parallel to the given horizontal axis.
+float32[] 	support_edge_remove_offset 				# offset along the cloud axis ([X,Y,Z]) (expressed in meters) to define the frame around the support of points to be removed (use default id size != 3)   
+# for more info about ransac primitive see: http://docs.pointclouds.org/1.7.0/classpcl_1_1_s_a_c_segmentation_from_normals.html   
+int32 	ransac_max_iteration_threshold			# number of RANSAC iterations to look for a support in a iteration of this service algorithm.
+float32 	ransac_distance_point_in_shape_threshold# the distance between two points to be considered as belonging to the same shape (in meters).
+float32 	ransac_model_normal_distance_weigth		# Set the relative weight ([0 1]) to give to the angular distance (0 to pi/2) between point normals and the plane normal.
+
+
+---
+
+
+# outputs (msg type)
+Support[] 	supports_description			# contains the description of each supports (size=number of found supports) (see Support msg for more info)
+
+# used parameters (different from the above if they are < 0 (default value usage))
+float32 	used_min_iterative_cloud_percentual_size
+float32 	used_min_iterative_plane_percentual_size
+float32[] 	used_horizontal_axis
+float32 	used_max_variance_threshold_for_horizontal
+float32 	used_min_variance_threshold_for_horizontal 	# -1 * variance_threshold_for_horizontal
+int32      	used_ransac_max_iteration_threshold 
+float32 	used_ransac_distance_point_in_shape_threshold
+float32  	used_ransac_model_normal_distance_weigth
+float32[] 	used_support_edge_remove_offset

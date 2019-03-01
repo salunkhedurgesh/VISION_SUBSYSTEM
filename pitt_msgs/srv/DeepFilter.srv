@@ -1,0 +1,26 @@
+Header header
+
+#########################################
+# This message describes the data exchange with the deep filtering service.
+#
+# In particular, given an input cloud and a threshold, this service returns
+# two clouds. One is composed only from the points that have z-coordinate closer (less than)
+# than the threshold. While, the other contains only the points that have z-coordinate
+# further (bigger or equal than).
+#
+# Also, it returns the used threshold that may be different from the input field
+# in case in which it is less than 0. In this case the default value is used.
+#
+# Finally, consider that this service does not requires any other input parameter during launch. 
+#########################################
+
+
+sensor_msgs/PointCloud2 input_cloud		# the input cloud to be filtered
+float32 deep_threshold					# the distance along z axis of the camera after which points are discarded (in meters)
+ 
+---
+
+sensor_msgs/PointCloud2 cloud_closer	# the cloud containing the points closer than the threshold 
+sensor_msgs/PointCloud2 cloud_further	# the cloud containing the points further than the threshold
+
+float32 used_deep_threshold				# the used threshold to filter the input cloud 

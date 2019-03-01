@@ -1,0 +1,11 @@
+Header header
+# input
+sensor_msgs/PointCloud2 cloud
+
+---
+
+std_msgs/Float32 redPercentage
+std_msgs/Float32 bluePercentage
+std_msgs/Float32 greenPercentage
+std_msgs/String Color
+

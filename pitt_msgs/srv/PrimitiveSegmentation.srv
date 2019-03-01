@@ -1,0 +1,13 @@
+Header header
+
+# input
+sensor_msgs/PointCloud2 cloud
+sensor_msgs/PointCloud2 normals
+
+---
+#output
+int32[] inliers			# w.r.t the input cloud
+float32[] coefficients	# different set for different primitive shape
+float32 x_centroid
+float32 y_centroid
+float32 z_centroid

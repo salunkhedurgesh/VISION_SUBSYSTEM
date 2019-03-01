@@ -1,0 +1,48 @@
+Header header
+
+#########################################
+# This message describes the data exchange with the arm filtering service.
+#
+# In particular, given an input cloud as well as the coordinates of two bounding boxes
+# to be placed with respect to the (right/left) (forearm/elbow) frames given as input
+# parameter during launch. Moreover, the bounding boxes are described with the coordinate ([X,Y,Z])
+# of two particular points; the one with all minimum coordinate value as well as the one with
+# all maximum values. 
+#
+# Also, it returns the used parameters that may be different from the input fields
+# in case in which they have not correct dimension (3d vector). In this case the default value is used. 
+#
+# Finally, consider that this service requires as input parameter during launch
+# (see the launch file configuration for more info):
+#	1) flag ("1":true, "0":false, ".":default) to show or not the cloud. 
+# In this viewer it will be possible to see the input cloud (red) and the arm-less cloud (green).
+#	2) the name of the optical frame of the camera ("."=default)
+#	3) the name of the left forearm frame where place the forearm filtering bounding box. 
+#	4) the name of the right forearm frame where place the forearm filtering bounding box.
+#	5) the name of the left elbow frame where place the elbow filtering bounding box.
+#	6) the name of the right elbow frame where place the elbow filtering bounding box.
+#########################################
+
+
+sensor_msgs/PointCloud2 input_cloud						# the original input cloud
+
+# for more on those parameter see pcl::drop_box class documentation: 
+# http://docs.pointclouds.org/trunk/classpcl_1_1_crop_box_3_01pcl_1_1_p_c_l_point_cloud2_01_4.html#a4fc4d9470ac1789fa250ec1f1397db50
+float32[] forearm_bounding_box_min_value				# [X,Y,Z] the coordinate of the minimum point of the box around the forearm (w.r.t. the center of mass of the box)
+float32[] forearm_bounding_box_max_value				# [X,Y,Z] the coordinate of the maximum point of the box around the forearm (w.r.t. the center of mass of the box)
+
+float32[] elbow_bounding_box_min_value					# [X,Y,Z] the coordinate of the minimum point of the box around the elbow (w.r.t. the center of mass of the box)
+float32[] elbow_bounding_box_max_value					# [X,Y,Z] the coordinate of the maximum point of the box around the elbow (w.r.t. the center of mass of the box)
+
+
+---
+
+
+sensor_msgs/PointCloud2 armless_cloud				# the output cloud. Where the points of the robot arm are removed
+
+# returns back the value of the parameters used (it may be different from input in case of default value settings)
+float32[] used_forearm_bounding_box_min_value
+float32[] used_forearm_bounding_box_max_value
+
+float32[] used_elbow_bounding_box_min_value
+float32[] used_elbow_bounding_box_max_value
