@@ -80,7 +80,7 @@ In pitt_msgs:
     ```
 * (optional) Read the data
     ```
-    rostopic echo /ransac_segmentation
+    rostopic echo /ransac_segmentation/trackedShapes
     ```
     and / or
     ```
