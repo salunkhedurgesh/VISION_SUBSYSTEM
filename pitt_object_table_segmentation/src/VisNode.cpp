@@ -421,7 +421,7 @@ void ransacCallback(const TrackedShapes::Ptr& msg)
  */
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "VisService");
+  ros::init(argc, argv, "VisNode");
   ros::NodeHandle sn;
   ros::NodeHandle pn;
 
