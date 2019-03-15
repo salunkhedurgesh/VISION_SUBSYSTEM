@@ -187,7 +187,7 @@ void ransacCallback(const TrackedShapes::Ptr& msg)
        /**
         * THE COMMENTED CODE -> TO BE UNCOMMENTED AFTER WE ARE SURE THAT THE PITT algorithm is robust enough and does not
         * give different scenes when the actual scene has not changed
-        * PLEASE READ THE REPORT -> How to Run -> Some useful notes TO UNDERSTAND BETTER
+        * PLEASE READ THE REPORT -> Recommandation -> Vision Module TO UNDERSTAND BETTER
         */
 
        /*if(k[count]=!obj[count].id) //scene changed
